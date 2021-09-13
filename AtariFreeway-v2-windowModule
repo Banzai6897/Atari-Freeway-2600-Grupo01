@@ -1,0 +1,22 @@
+##################################################################################
+#                                Módulo Janela                                   #
+##################################################################################
+
+import pygame
+import os
+
+#window settings
+WINDOW_WIDTH, WINDOW_HEIGHT = 1280, 920 #largura e tamanho da window
+WINDOW = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT))#cria a window do jogo
+pygame.display.set_caption("Freeway 2600 - Resmastered")#muda o nome da window do jogo
+GREY = (105, 105, 105)
+BLACK = (0, 0, 0)
+FPS = 60
+BG = pygame.image.load(os.path.join("assets", "fundoFreeway1280x920.png")) #load a imagem de fundo
+UPPER_LIMIT = pygame.Rect(0, 0, 1280, 20)
+LOWER_LIMIT = pygame.Rect(0, 900, 1280, 20)
+#função que desenha a janela do jogo
+def draw_window():
+    WINDOW.blit(BG, (0,0))#copiar a imagem de fundo da rua e por na windom
+    pygame.draw.rect(WINDOW, BLACK, UPPER_LIMIT)
+    pygame.draw.rect(WINDOW, BLACK, LOWER_LIMIT)
