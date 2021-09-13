@@ -1,0 +1,34 @@
+##################################################################################
+#                              Módulo dos automóveis                             #
+##################################################################################
+
+import pygame
+import random
+import os
+import windowModule as win
+
+#carro settings
+CARRO_WIDTH, CARRO_HEIGHT = 40, 60 #tamnho dos carros
+CARRO_XSTART, CARRO1_YSTART = 1218, 128 #posicao inicial de todos os carros
+CARRO2_YSTART = 196
+CARRO3_YSTART = 262
+CARRO4_YSTART = 330
+CARRO5_YSTART = 400
+CARRO6_YSTART = 488
+CARRO7_YSTART = 555
+CARRO8_YSTART = 618
+CARRO9_YSTART = 680
+CARRO10_YSTART = 744
+IMAGEM_CARRO_VERMELHO = pygame.image.load(os.path.join("assets", "carro.png"))#load a imagem do carro
+CARRO_VERMELHO = pygame.transform.rotate(pygame.transform.scale(IMAGEM_CARRO_VERMELHO,(CARRO_WIDTH, CARRO_HEIGHT)), 270)#muda a escala do carro
+VELOCIDADE_CARRRO = random.randint(1,8)
+
+#função que desenha os carros 
+def draw_carros(carro, velocidade, run):
+    win.WINDOW.blit(CARRO_VERMELHO,(carro.x, carro.y))#copiar a imagens do carro
+    carro.x -= velocidade
+    while run == True and carro.x <= 0:
+        carro.x += 1230
+        draw_carros(carro, (velocidade*random.randint(1,4)), run)
+        if run == False:
+            break
