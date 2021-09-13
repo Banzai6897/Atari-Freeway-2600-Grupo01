@@ -1,0 +1,29 @@
+##################################################################################
+#                                Módulo da Galinha                               #
+##################################################################################
+
+import pygame
+import os
+import windowModule as win
+
+#galinhas settings
+GALINHA_WIDTH, GALINHA_HEIGHT = 48, 48#largura e tamanho da galinha (personagem jogavel)
+GALINHA1_START_X, GALINHA1_START_Y = 320,840#local inicial da primeira galinha (jogador 1)
+GALINHA2_START_X, GALINHA2_START_Y = 890,840#local inicial da segunda galinha (jogador 2)
+IMAGEM_GALINHA = pygame.image.load(os.path.join("assets", "galinha.png"))#load a imagem da galinha
+GALINHA1 = pygame.transform.scale(IMAGEM_GALINHA, (GALINHA_WIDTH, GALINHA_HEIGHT))#muda a escala da galinha
+GALINHA2 = pygame.transform.flip(GALINHA1, True, False)
+VELOCIDADE_GALINHA = 2
+#função que desenha as galinhas
+def draw_galinhas(userGalinha1, userGalinha2, velocidade):
+    win.WINDOW.blit(GALINHA1, (userGalinha1.x, userGalinha1.y))#copiar a imagem da primeira galinha (primeiro jogador)
+    win.WINDOW.blit(GALINHA2, (userGalinha2.x, userGalinha2.y))#copiar a imagem da segunda galinha (segundo jogador)
+    keys_pressed = pygame.key.get_pressed()
+    if keys_pressed[pygame.K_w] and userGalinha1.y + velocidade - 20 > win.UPPER_LIMIT.y: 
+        userGalinha1.y -= velocidade
+    elif keys_pressed[pygame.K_s] and userGalinha1.y < win.LOWER_LIMIT.y - 40:
+        userGalinha1.y += velocidade
+    if keys_pressed[pygame.K_UP] and userGalinha2.y + velocidade - 20 > win.UPPER_LIMIT.y:
+        userGalinha2.y -= VELOCIDADE_GALINHA
+    elif keys_pressed[pygame.K_DOWN] and userGalinha2.y < win.LOWER_LIMIT.y - 40:
+        userGalinha2.y += VELOCIDADE_GALINHA
