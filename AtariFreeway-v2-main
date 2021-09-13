@@ -1,0 +1,63 @@
+##################################################################################
+#                               Módulo de Acesso                                 #
+##################################################################################
+
+import pygame
+import os
+import time
+import random
+import windowModule as win
+import chickenModule as ch
+import autoModule as au
+import escapeModule as esc
+
+#Função main que contém a chamada de todas as funções.
+def main():
+    #criação de quads para os objetos do jogo
+    userGalinha1 = pygame.Rect(ch.GALINHA1_START_X, ch.GALINHA1_START_Y, ch.GALINHA_WIDTH, ch.GALINHA_HEIGHT)
+    userGalinha2 = pygame.Rect(ch.GALINHA2_START_X, ch.GALINHA2_START_Y, ch.GALINHA_WIDTH, ch.GALINHA_HEIGHT)
+    carro01 = pygame.Rect(au.CARRO_XSTART, au.CARRO1_YSTART, au.CARRO_WIDTH, au.CARRO_HEIGHT)
+    carro02 = pygame.Rect(au.CARRO_XSTART, au.CARRO2_YSTART, au.CARRO_WIDTH, au.CARRO_HEIGHT)
+    carro03 = pygame.Rect(au.CARRO_XSTART, au.CARRO3_YSTART, au.CARRO_WIDTH, au.CARRO_HEIGHT)
+    carro04 = pygame.Rect(au.CARRO_XSTART, au.CARRO4_YSTART, au.CARRO_WIDTH, au.CARRO_HEIGHT)
+    carro05 = pygame.Rect(au.CARRO_XSTART, au.CARRO5_YSTART, au.CARRO_WIDTH, au.CARRO_HEIGHT)
+    carro06 = pygame.Rect(au.CARRO_XSTART, au.CARRO6_YSTART, au.CARRO_WIDTH, au.CARRO_HEIGHT)
+    carro07 = pygame.Rect(au.CARRO_XSTART, au.CARRO7_YSTART, au.CARRO_WIDTH, au.CARRO_HEIGHT)
+    carro08 = pygame.Rect(au.CARRO_XSTART, au.CARRO8_YSTART, au.CARRO_WIDTH, au.CARRO_HEIGHT)
+    carro09 = pygame.Rect(au.CARRO_XSTART, au.CARRO9_YSTART, au.CARRO_WIDTH, au.CARRO_HEIGHT)
+    carro10 = pygame.Rect(au.CARRO_XSTART, au.CARRO10_YSTART, au.CARRO_WIDTH, au.CARRO_HEIGHT)
+
+    
+
+    run = True
+
+    clock = pygame.time.Clock()#cria um relogio que ajuda a contar o tempo
+
+    while run:
+        clock.tick(win.FPS)
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                run = False #finaliza o jogo
+
+        #Desenhando as imagens na tela:
+        esc.escQuitFunction()
+        win.draw_window()
+        ch.draw_galinhas(userGalinha1,userGalinha2, ch.VELOCIDADE_GALINHA)
+        au.draw_carros(carro01,random.randint(2,16), run)
+        au.draw_carros(carro02,random.randint(2,17), run)
+        au.draw_carros(carro03,random.randint(2,20), run)
+        au.draw_carros(carro04,random.randint(2,16), run)
+        au.draw_carros(carro05,random.randint(2,12), run)
+        au.draw_carros(carro06,random.randint(2,10), run)
+        au.draw_carros(carro07,random.randint(2,10), run)
+        au.draw_carros(carro08,random.randint(2,10), run)
+        au.draw_carros(carro09,random.randint(2,15), run)
+        au.draw_carros(carro10,random.randint(2,19), run)
+        pygame.display.update()
+
+
+        
+    pygame.quit() #sair do jogo
+
+if __name__ == "__main__":
+    main()
