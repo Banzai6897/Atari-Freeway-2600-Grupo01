@@ -1,0 +1,6 @@
+Changes from pilot version to v2:
+
+Program is lighter and graphics are smoother.
+Code is organized by modules according to the aplication's entitys.
+Screen Limits are now estabilished.
+Car movement improved to completely random speed (and they are faster). 
